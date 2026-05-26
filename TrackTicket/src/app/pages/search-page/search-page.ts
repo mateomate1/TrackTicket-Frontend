@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { provideHttpClient } from '@angular/common/http';
-import { SearchFormComponent } from './search-form-component/search-form-component';
+import { SearchFormComponent } from '@components/search-page/search-form-component/search-form-component';
+import { SearchResultList } from '@components/search-page/search-result-list/search-result-list';
 
 @Component({
   selector: 'search-page',
-  imports: [SearchFormComponent],
+  imports: [SearchFormComponent, SearchResultList],
   templateUrl: './search-page.html',
   styleUrl: './search-page.css',
 })

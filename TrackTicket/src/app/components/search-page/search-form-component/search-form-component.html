@@ -1,41 +1,80 @@
-<form class="flex flex-wrap items-end gap-4 rounded bg-blue-950 p-6 text-white shadow-lg">
-  <h2 class="w-full text-2xl font-bold">Buscar conciertos</h2>
+<form
+  (ngSubmit)="searchConcerts()"
+  class="flex flex-wrap items-end gap-4 rounded bg-blue-950 p-6 text-white shadow-lg"
+>
+
+  <h2 class="w-full text-2xl font-bold">
+    Buscar conciertos
+  </h2>
 
   <div class="flex-1 min-w-[180px]">
-    <label class="mb-1 block">Fecha inicio</label>
+
+    <label class="mb-1 block">
+      Fecha inicio
+    </label>
+
     <input
       type="date"
+      name="startDate"
+      [ngModel]="startDate()"
+      (ngModelChange)="startDate.set($event)"
       class="w-full rounded border border-gray-700 bg-gray-900 p-2 text-white outline-none focus:border-blue-500"
     />
+
   </div>
 
   <div class="flex-1 min-w-[180px]">
-    <label class="mb-1 block">Fecha fin</label>
+
+    <label class="mb-1 block">
+      Fecha fin
+    </label>
+
     <input
       type="date"
+      name="endDate"
+      [ngModel]="endDate()"
+      (ngModelChange)="endDate.set($event)"
       class="w-full rounded border border-gray-700 bg-gray-900 p-2 text-white outline-none focus:border-blue-500"
     />
+
   </div>
 
   <div class="flex-1 min-w-[200px]">
-    <label class="mb-1 block">Artista</label>
+
+    <label class="mb-1 block">
+      Artista
+    </label>
+
     <input
       type="text"
+      name="artist"
+      [ngModel]="artist()"
+      (ngModelChange)="artist.set($event)"
       placeholder="Nombre del artista"
       class="w-full rounded border border-gray-700 bg-gray-900 p-2 text-white outline-none focus:border-blue-500"
     />
+
   </div>
 
   <div class="flex-1 min-w-[180px]">
-    <label class="mb-1 block">Ubicacion</label>
+
+    <label class="mb-1 block">
+      Ubicacion
+    </label>
+
     <input
       type="text"
+      name="location"
+      [ngModel]="location()"
+      (ngModelChange)="location.set($event)"
       placeholder="Provincia"
       class="w-full rounded border border-gray-700 bg-gray-900 p-2 text-white outline-none focus:border-blue-500"
     />
+
   </div>
 
   <div class="flex gap-2">
+
     <button
       type="reset"
       class="rounded border border-white px-4 py-2 transition hover:bg-white hover:text-black"
@@ -49,5 +88,7 @@
     >
       Buscar
     </button>
+
   </div>
+
 </form>

@@ -1,3 +1,4 @@
 export const enviroment = {
-  root: 'http://localhost:8080/api'
+  root: 'http://localhost:8080/api',
+  searchConcerts: '',
 }
