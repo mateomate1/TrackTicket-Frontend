@@ -9,8 +9,8 @@ import { Navbar } from './shared/navbar/navbar';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
+
 export class App {
   protected readonly title = signal('TrackTicket');
 
-  
 }
