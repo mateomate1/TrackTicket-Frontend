@@ -1,0 +1,93 @@
+<main class="h-screen overflow-hidden flex items-center justify-center text-white">
+
+    <section class="relative w-full h-screen border border-white/10 bg-black/20 backdrop-blur-sm overflow-hidden">
+
+        <div class="absolute top-[110px] left-1/2 -translate-x-1/2 z-0">
+            <div
+                class="w-[220px] h-[220px] rounded-full border-[6px] border-[#ebe6df] overflow-hidden shadow-2xl">
+
+                <img
+                    [src]="artist?.linkImage"
+                    alt="imagen artista"
+                    class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <div class="absolute inset-0 overflow-y-auto main-scroll">
+
+            <div class="h-[420px]"></div>
+
+            <div
+                class="w-[92%] min-h-[800px] mx-auto bg-[#ece7df] rounded-t-[34px] text-black px-8 py-10 relative z-20">
+
+                <div class="grid grid-cols-2 gap-8">
+
+                    <div>
+
+                        <span
+                            class="text-[10px] tracking-[0.35em] uppercase text-[#9d7c60] font-semibold">
+                            Artist profile
+                        </span>
+
+                        <h1 class="text-6xl font-black leading-none mt-3">
+                            {{ artist?.name }}
+                        </h1>
+
+                        <div class="mt-8">
+
+                            <p
+                                class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2">
+                                Genre
+                            </p>
+
+                            <div
+                                class="bg-[#ddd5ca] rounded-3xl px-5 py-4 inline-block font-bold">
+                                {{ artist?.genres }}
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+
+                            <p
+                                class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2">
+                                Playlist
+                            </p>
+
+                            <a
+                                [href]="artist?.linkList"
+                                target="_blank"
+                                class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-black text-white font-bold tracking-[0.2em] uppercase text-xs hover:bg-[#222] transition">
+
+                                Escuchar Playlist
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+
+                        <p
+                            class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-4">
+                            Albums
+                        </p>
+
+                        <div class="space-y-4">
+
+                            @for (album of artist?.albums; track $index) {
+
+                                <div
+                                    class="bg-[#ddd5ca] rounded-3xl p-4 flex items-center gap-4">
+
+                                    <h3 class="font-black text-lg z-0">
+                                        {{ album }}
+                                    </h3>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
