@@ -1,0 +1,20 @@
+<google-map
+  height="600px"
+  width="100%"
+  [center]="mapService.center()"
+  [zoom]="mapService.zoom()"
+>
+
+  @for(marker of mapService.markers(); track marker.title) {
+
+    <map-marker
+      [position]="{
+        lat: marker.lat,
+        lng: marker.lng
+      }"
+      [title]="marker.title"
+    />
+
+  }
+
+</google-map>

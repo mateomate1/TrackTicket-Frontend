@@ -1,14 +1,32 @@
-@for (concert of concertSearch.concerts(); track concert.idTicketMaster) {
-  <div class="text-white p-3 rounded bg-blue-950 mb-3">
-    <h2>{{ concert.name }}</h2>
+<div class="container mt-4">
+  <div class="d-flex flex-column align-items-center">
+    @for (concert of concertSearch.concerts(); track concert.idTicketMaster) {
+      <div
+        class="bg-blue-950 text-white p-4 rounded shadow-lg mb-4 border border-info"
+        style="width: 500px"
+      >
+        <h2 class="text-center mb-4 fw-bold">
+          {{ concert.name }}
+        </h2>
 
-    <p>Artista: {{ concert.artistName }}</p>
-    <p>Fecha: {{ concert.date }}</p>
-    <p>Recinto: {{ concert.venue.venueName }}</p>
-    <p>Direccion: {{ concert.venue.venueAddress }}</p>
-    <p>Estado: {{ concert.venue.venueState }}</p>
-    <p>Pais: {{ concert.venue.venueCountry }}</p>
+        <p><strong>Artista:</strong> {{ concert.artistName }}</p>
 
-    <a [href]="concert.link" target="_blank" class="text-warning"> Ver concierto </a>
+        <p><strong>Fecha:</strong> {{ concert.date }}</p>
+
+        <p><strong>Recinto:</strong> {{ concert.venue.venueName }}</p>
+
+        <p><strong>Direccion:</strong> {{ concert.venue.venueAddress }}</p>
+
+        <p><strong>Estado:</strong> {{ concert.venue.venueState }}</p>
+
+        <p><strong>Pais:</strong> {{ concert.venue.venueCountry }}</p>
+
+        <div class="text-center mt-4">
+          <a [href]="concert.link" target="_blank" class="btn btn-warning fw-bold px-4">
+            Ver concierto
+          </a>
+        </div>
+      </div>
+    }
   </div>
-}
+</div>

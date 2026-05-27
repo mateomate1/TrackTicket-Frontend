@@ -6,5 +6,7 @@ export interface searchResponse {
   date: string
   link: string
   artistName: string
+  artistGenre: string
+  artistLink: string
   venue: VenueDTO
 }

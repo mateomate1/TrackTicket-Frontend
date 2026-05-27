@@ -2,6 +2,7 @@ import { FormsModule } from '@angular/forms';
 import { Component, inject, signal } from '@angular/core';
 import { searchRequest } from '@interfaces/concert-search-request';
 import { ConcertSearch } from '@services/concert-search';
+import { MapService } from '@services/map-service';
 
 @Component({
   selector: 'search-form-component',
@@ -12,6 +13,7 @@ import { ConcertSearch } from '@services/concert-search';
 })
 export class SearchFormComponent {
   concertSearch = inject(ConcertSearch);
+  mapService = inject(MapService);
 
   startDate = signal('');
   endDate = signal('');
@@ -29,6 +31,14 @@ export class SearchFormComponent {
     console.log(request);
 
     this.concertSearch.getConcerts(request);
+    this.mapService.resetMarkers();
+    for (const concert of this.concertSearch.concerts()) {
+      this.mapService.addMarker({
+        lat: concert.venue.latitude,
+        lng: concert.venue.longitude,
+        title: concert.name
+      })
+    }
     console.log(this.concertSearch.concerts());
   }
 }
