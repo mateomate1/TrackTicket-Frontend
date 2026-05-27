@@ -14,6 +14,7 @@ export class ConcertSearch {
   constructor(private httpClient: HttpClient) {}
 
   getConcerts(request: searchRequest) {
+    this.concerts.set([])
     this.httpClient.post<searchResponse[]>(this.API_URL, request).subscribe((res) => {
       this.concerts.set(res);
     });
