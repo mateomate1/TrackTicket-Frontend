@@ -1,66 +1,46 @@
 <form
   (ngSubmit)="searchConcerts()"
-  class="flex flex-wrap items-end gap-4 rounded bg-blue-950 p-6 text-white shadow-lg"
+  class="grid grid-cols-6 items-end gap-2 rounded bg-blue-950 p-3 text-white shadow-lg"
 >
-
-  <h2 class="w-full text-2xl font-bold">
-    Buscar conciertos
-  </h2>
-
-  <div class="flex-1 min-w-[180px]">
-
-    <label class="mb-1 block">
-      Fecha inicio
-    </label>
+  <div>
+    <label class="mb-1 block text-xs"> Inicio </label>
 
     <input
       type="date"
       name="startDate"
       [ngModel]="startDate()"
       (ngModelChange)="startDate.set($event)"
-      class="w-full rounded border border-gray-700 bg-gray-900 p-2 text-white outline-none focus:border-blue-500"
+      class="w-full rounded border border-gray-700 bg-gray-900 px-2 py-1 text-sm text-white outline-none focus:border-blue-500"
     />
-
   </div>
 
-  <div class="flex-1 min-w-[180px]">
-
-    <label class="mb-1 block">
-      Fecha fin
-    </label>
+  <div>
+    <label class="mb-1 block text-xs"> Fin </label>
 
     <input
       type="date"
       name="endDate"
       [ngModel]="endDate()"
       (ngModelChange)="endDate.set($event)"
-      class="w-full rounded border border-gray-700 bg-gray-900 p-2 text-white outline-none focus:border-blue-500"
+      class="w-full rounded border border-gray-700 bg-gray-900 px-2 py-1 text-sm text-white outline-none focus:border-blue-500"
     />
-
   </div>
 
-  <div class="flex-1 min-w-[200px]">
-
-    <label class="mb-1 block">
-      Artista
-    </label>
+  <div>
+    <label class="mb-1 block text-xs"> Artista </label>
 
     <input
       type="text"
       name="artist"
       [ngModel]="artist()"
       (ngModelChange)="artist.set($event)"
-      placeholder="Nombre del artista"
-      class="w-full rounded border border-gray-700 bg-gray-900 p-2 text-white outline-none focus:border-blue-500"
+      placeholder="Artista"
+      class="w-full rounded border border-gray-700 bg-gray-900 px-2 py-1 text-sm text-white outline-none focus:border-blue-500"
     />
-
   </div>
 
-  <div class="flex-1 min-w-[180px]">
-
-    <label class="mb-1 block">
-      Ubicacion
-    </label>
+  <div>
+    <label class="mb-1 block text-xs"> Ubicacion </label>
 
     <input
       type="text"
@@ -68,27 +48,18 @@
       [ngModel]="location()"
       (ngModelChange)="location.set($event)"
       placeholder="Provincia"
-      class="w-full rounded border border-gray-700 bg-gray-900 p-2 text-white outline-none focus:border-blue-500"
+      class="w-full rounded border border-gray-700 bg-gray-900 px-2 py-1 text-sm text-white outline-none focus:border-blue-500"
     />
-
   </div>
 
-  <div class="flex gap-2">
+  <button
+    type="reset"
+    class="rounded border border-white px-2 py-1 text-sm transition hover:bg-white hover:text-black"
+  >
+    Limpiar
+  </button>
 
-    <button
-      type="reset"
-      class="rounded border border-white px-4 py-2 transition hover:bg-white hover:text-black"
-    >
-      Limpiar
-    </button>
-
-    <button
-      type="submit"
-      class="rounded bg-blue-600 px-4 py-2 transition hover:bg-blue-700"
-    >
-      Buscar
-    </button>
-
-  </div>
-
+  <button type="submit" class="rounded bg-blue-600 px-2 py-1 text-sm transition hover:bg-blue-700">
+    Buscar
+  </button>
 </form>
