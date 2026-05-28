@@ -6,28 +6,43 @@ import { MapMarker } from '@interfaces/map-marker';
   providedIn: 'root',
 })
 export class MapService {
-  center = signal<MapCenter>({
+  center = signal<google.maps.LatLngLiteral>({
     lat: 0,
     lng: 0,
   });
 
   zoom = signal(5);
 
-  markers = signal<MapMarker[]>([]);
+  markers = signal<google.maps.LatLngLiteral[]>([]);
 
   resetMarkers() {
     this.markers.set([]);
   }
 
-  addMarker(newMarker: MapMarker) {
+  addMarker(newMarker: google.maps.LatLngLiteral) {
     this.markers.update((markers) => [...markers, newMarker]);
   }
 
-  setCenter(newCenter: MapCenter) {
+  setCenter(newCenter: google.maps.LatLngLiteral) {
     this.center.set(newCenter);
   }
 
   setZoom(newZoom: number) {
     this.zoom.set(newZoom);
+  }
+
+  setUserLocation() {
+    if (typeof navigator === 'undefined') {
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.center.set({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+
+      this.zoom.set(10);
+    });
   }
 }

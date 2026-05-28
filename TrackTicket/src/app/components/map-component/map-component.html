@@ -1,20 +1,10 @@
-<google-map
-  height="600px"
-  width="100%"
-  [center]="mapService.center()"
-  [zoom]="mapService.zoom()"
->
-
-  @for(marker of mapService.markers(); track marker.title) {
-
-    <map-marker
+<google-map mapId="91b0d58e8c6e934e6856af7f" height="600px" width="100%" [center]="mapService.center()" [zoom]="mapService.zoom()">
+  @for (marker of markers(); track marker) {
+    <map-advanced-marker
       [position]="{
         lat: marker.lat,
-        lng: marker.lng
+        lng: marker.lng,
       }"
-      [title]="marker.title"
     />
-
   }
-
 </google-map>
