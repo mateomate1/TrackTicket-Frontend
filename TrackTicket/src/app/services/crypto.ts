@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { enviroment } from '@shared/environmentAPI';
+import { isPlatformBrowser } from '@angular/common';
 import * as forge from 'node-forge';
 
 @Injectable({
@@ -11,10 +12,13 @@ export class Crypto {
 
   private publicKey: forge.pki.PublicKey | null = null;
   private readonly REFRESH_INTERVAL_MS = 15 * 60 * 1000;
+  private platformId = inject(PLATFORM_ID);
 
   constructor(private httpClient: HttpClient) {
-    this.loadPublicKey();
-    setInterval(() => this.loadPublicKey(), this.REFRESH_INTERVAL_MS);
+    if (isPlatformBrowser(this.platformId)) {
+      this.loadPublicKey();
+      setInterval(() => this.loadPublicKey(), this.REFRESH_INTERVAL_MS);
+    }
   }
 
   private async loadPublicKey(): Promise<void> {
@@ -33,7 +37,6 @@ export class Crypto {
 
       console.log('Clave pública cargada correctamente');
     } catch (error) {
-      
       console.error('Error al cargar la clave pública:', error);
     }
   }
@@ -42,7 +45,6 @@ export class Crypto {
     if (!this.publicKey) {
       throw new Error('La clave pública aún no está cargada');
     }
-
     const encrypted = (this.publicKey as any).encrypt(text, 'RSAES-PKCS1-V1_5');
     return forge.util.encode64(encrypted);
   }
