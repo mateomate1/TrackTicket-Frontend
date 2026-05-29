@@ -1,33 +1,39 @@
 <form
   (ngSubmit)="searchConcerts()"
-  class="grid grid-cols-6 items-end gap-2 rounded bg-blue-950 p-3 text-white shadow-lg"
+  class="grid grid-cols-6 items-end gap-4 rounded-[30px] border border-white/10 bg-black/20 p-5 text-white shadow-2xl backdrop-blur-sm"
 >
   <div>
-    <label class="mb-1 block text-xs"> Inicio </label>
+    <label class="mb-2 block text-[10px] font-semibold uppercase tracking-[0.28em] text-[#9d7c60]">
+      Inicio
+    </label>
 
     <input
       type="date"
       name="startDate"
       [ngModel]="startDate()"
       (ngModelChange)="startDate.set($event)"
-      class="w-full rounded border border-gray-700 bg-gray-900 px-2 py-1 text-sm text-white outline-none focus:border-blue-500"
+      class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white outline-none transition focus:border-[#9d7c60] focus:bg-white/10"
     />
   </div>
 
   <div>
-    <label class="mb-1 block text-xs"> Fin </label>
+    <label class="mb-2 block text-[10px] font-semibold uppercase tracking-[0.28em] text-[#9d7c60]">
+      Fin
+    </label>
 
     <input
       type="date"
       name="endDate"
       [ngModel]="endDate()"
       (ngModelChange)="endDate.set($event)"
-      class="w-full rounded border border-gray-700 bg-gray-900 px-2 py-1 text-sm text-white outline-none focus:border-blue-500"
+      class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white outline-none transition focus:border-[#9d7c60] focus:bg-white/10"
     />
   </div>
 
   <div>
-    <label class="mb-1 block text-xs"> Artista </label>
+    <label class="mb-2 block text-[10px] font-semibold uppercase tracking-[0.28em] text-[#9d7c60]">
+      Artista
+    </label>
 
     <input
       type="text"
@@ -35,12 +41,14 @@
       [ngModel]="artist()"
       (ngModelChange)="artist.set($event)"
       placeholder="Artista"
-      class="w-full rounded border border-gray-700 bg-gray-900 px-2 py-1 text-sm text-white outline-none focus:border-blue-500"
+      class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white placeholder:text-gray-400 outline-none transition focus:border-[#9d7c60] focus:bg-white/10"
     />
   </div>
 
   <div>
-    <label class="mb-1 block text-xs"> Ubicacion </label>
+    <label class="mb-2 block text-[10px] font-semibold uppercase tracking-[0.28em] text-[#9d7c60]">
+      Ubicacion
+    </label>
 
     <input
       type="text"
@@ -48,18 +56,21 @@
       [ngModel]="location()"
       (ngModelChange)="location.set($event)"
       placeholder="Provincia"
-      class="w-full rounded border border-gray-700 bg-gray-900 px-2 py-1 text-sm text-white outline-none focus:border-blue-500"
+      class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white placeholder:text-gray-400 outline-none transition focus:border-[#9d7c60] focus:bg-white/10"
     />
   </div>
 
   <button
     type="reset"
-    class="rounded border border-white px-2 py-1 text-sm transition hover:bg-white hover:text-black"
+    class="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] transition hover:bg-white hover:text-black"
   >
     Limpiar
   </button>
 
-  <button type="submit" class="rounded bg-blue-600 px-2 py-1 text-sm transition hover:bg-blue-700">
+  <button
+    type="submit"
+    class="rounded-2xl bg-[#9d7c60] px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:brightness-110"
+  >
     Buscar
   </button>
 </form>

@@ -1,9 +1,22 @@
-<header class="bg-gray-900 py-3 flex border-b border-gray-900">
-  <a routerLink="/">
-    <img src="favicon.ico" class="w-10"/>
+<header
+  class="flex items-center rounded-[28px] border border-white/10 bg-black/20 px-5 py-3 shadow-2xl backdrop-blur-sm"
+>
+  <a routerLink="/" class="flex items-center gap-3 transition hover:opacity-80">
+    <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5">
+      <img src="favicon.ico" class="w-7" />
+    </div>
+
+    <div>
+      <p class="text-[9px] font-semibold uppercase tracking-[0.3em] text-[#9d7c60]">TrackTicket</p>
+
+      <h1 class="text-lg font-black text-white">Buscador de conciertos</h1>
+    </div>
   </a>
 
-  <a routerLink="/notifications" class="ml-auto text-white">
-    <img src="notification.png" class="w-7 .mr-15" />
+  <a
+    routerLink="/notifications"
+    class="ml-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 transition hover:bg-white/10"
+  >
+    <img src="notification.png" class="w-5" />
   </a>
 </header>
