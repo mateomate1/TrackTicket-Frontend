@@ -1,33 +1,46 @@
-<div class="container mt-4">
-  <div class="d-flex flex-column align-items-center">
-    @for (concert of concertSearch.concerts(); track concert.idTicketMaster) {
-      <div
-        class="bg-blue-950 text-white p-4 rounded shadow-lg mb-4 border border-info"
-        style="width: 500px"
-        (click)="listClick(concert)"
-      >
-        <h2 class="text-center mb-4 fw-bold">
+<div class="flex flex-col gap-3 p-2">
+  @for (concert of concertSearch.concerts(); track concert.idTicketMaster) {
+    <div
+      class="cursor-pointer rounded-[24px] border border-white/10 bg-black/20 p-4 text-white shadow-xl backdrop-blur-sm transition hover:border-[#9d7c60]"
+      (click)="listClick(concert)"
+    >
+      <div class="mb-3">
+        <h2 class="text-xl font-black leading-tight">
           {{ concert.name }}
         </h2>
+      </div>
 
-        <p><strong>Artista:</strong> {{ concert.artistName }}</p>
+      <div class="space-y-2 text-sm">
+        <div class="rounded-xl bg-white/5 px-3 py-2">
+          <span class="text-[#9d7c60]">Artista:</span>
+          {{ concert.artistName }}
+        </div>
 
-        <p><strong>Fecha:</strong> {{ concert.date }}</p>
+        <div class="rounded-xl bg-white/5 px-3 py-2">
+          <span class="text-[#9d7c60]">Fecha:</span>
+          {{ concert.date }}
+        </div>
 
-        <p><strong>Recinto:</strong> {{ concert.venue.venueName }}</p>
+        <div class="rounded-xl bg-white/5 px-3 py-2">
+          <span class="text-[#9d7c60]">Recinto:</span>
+          {{ concert.venue.venueName }}
+        </div>
 
-        <p><strong>Direccion:</strong> {{ concert.venue.venueAddress }}</p>
-
-        <p><strong>Estado:</strong> {{ concert.venue.venueState }}</p>
-
-        <p><strong>Pais:</strong> {{ concert.venue.venueCountry }}</p>
-
-        <div class="text-center mt-4">
-          <a [href]="concert.link" target="_blank" class="btn btn-warning fw-bold px-4">
-            Ver concierto
-          </a>
+        <div class="rounded-xl bg-white/5 px-3 py-2">
+          <span class="text-[#9d7c60]">Direccion:</span>
+          {{ concert.venue.venueAddress }}
         </div>
       </div>
-    }
-  </div>
+
+      <div class="mt-4 flex justify-end">
+        <a
+          [href]="concert.link"
+          target="_blank"
+          class="rounded-full bg-[#9d7c60] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white transition hover:brightness-110"
+        >
+          Ver concierto
+        </a>
+      </div>
+    </div>
+  }
 </div>
