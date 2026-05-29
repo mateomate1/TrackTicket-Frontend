@@ -1,0 +1,24 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-900">
+  <div class="bg-gray-800 rounded-2xl p-8 w-full max-w-md shadow-xl">
+
+    <div class="flex mb-6 bg-gray-700 rounded-lg p-1">
+      <button
+        (click)="showLogin.set(true)"
+        [class]="showLogin() ? 'flex-1 py-2 rounded-md bg-purple-600 text-white font-semibold transition-all' : 'flex-1 py-2 rounded-md text-gray-400 font-semibold transition-all'">
+        Login
+      </button>
+      <button
+        (click)="showLogin.set(false)"
+        [class]="!showLogin() ? 'flex-1 py-2 rounded-md bg-purple-600 text-white font-semibold transition-all' : 'flex-1 py-2 rounded-md text-gray-400 font-semibold transition-all'">
+        Registro
+      </button>
+    </div>
+
+    @if (showLogin()) {
+      <app-login-form />
+    } @else {
+      <app-register-form (registroExitoso)="showLogin.set(true)" />
+    }
+
+  </div>
+</div>
