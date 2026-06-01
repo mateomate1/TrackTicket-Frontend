@@ -1,0 +1,10 @@
+<google-map mapId="91b0d58e8c6e934e6856af7f" height="100%" width="100%" [center]="mapService.center()" [zoom]="mapService.zoom()">
+  @for (marker of markers(); track marker) {
+    <map-advanced-marker
+      [position]="{
+        lat: marker.lat,
+        lng: marker.lng,
+      }"
+    />
+  }
+</google-map>
