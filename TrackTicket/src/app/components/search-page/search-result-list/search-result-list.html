@@ -32,7 +32,14 @@
         </div>
       </div>
 
-      <div class="mt-4 flex justify-end">
+      <div class="mt-4 flex justify-end gap-2">
+        <button
+          (click)="$event.stopPropagation(); artistDetailClick(concert)"
+          class="rounded-full bg-[#9d7c60] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white transition hover:brightness-110"
+        >
+          Ver artista
+        </button>
+
         <a
           [href]="concert.link"
           target="_blank"

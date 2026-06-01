@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Artist } from '../../interfaces/artist';
-import { ArtistsService } from '../../services/artists-service';
+import { ArtistsListService } from '../../services/artists-list-service';
 import { Router } from '@angular/router';
+import { ArtistService } from '@services/artist-service';
 
 @Component({
   selector: 'app-favorites',
@@ -9,16 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './favorites.html',
   styleUrl: './favorites.css',
 })
-export class Favorites implements OnInit {
-  artists:Artist[]=[];
-
-  constructor(private artistService: ArtistsService, private router: Router){}
-
-  ngOnInit(): void {
-    this.artists = this.artistService.getArtists();
-  }
-
-  seeArtistDetails(artist: Artist){
-    this.router.navigate(['/artists', artist.idArtist]);
-  }
+export class Favorites {
+  artistService = inject(ArtistService);
+  router = inject(Router);
 }
