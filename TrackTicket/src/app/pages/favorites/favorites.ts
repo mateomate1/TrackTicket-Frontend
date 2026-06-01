@@ -19,6 +19,6 @@ export class Favorites implements OnInit {
   }
 
   seeArtistDetails(artist: Artist){
-    this.router.navigate(['/artists', artist.id]);
+    this.router.navigate(['/artists', artist.idArtist]);
   }
 }

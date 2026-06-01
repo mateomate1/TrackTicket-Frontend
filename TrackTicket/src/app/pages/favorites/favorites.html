@@ -1,8 +1,8 @@
 <section>
-    @for( artist of artists; track artist.id){
-        <div>
-            <p>{{ artist.name }}</p>
-            <button (click)="seeArtistDetails(artist)">Ver perfil</button>
-        </div>
-    }
+  @for (artist of artists; track artist.idArtist) {
+    <div>
+      <p>{{ artist.name }}</p>
+      <button (click)="seeArtistDetails(artist)">Ver perfil</button>
+    </div>
+  }
 </section>

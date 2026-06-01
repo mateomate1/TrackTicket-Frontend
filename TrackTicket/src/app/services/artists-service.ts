@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Artist } from '../interfaces/artist';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -8,56 +8,61 @@ import { Observable } from 'rxjs';
 })
 export class ArtistsService {
   private http =  inject(HttpClient);
-  artists: Artist[] = [
+  artists = signal<Artist[]>([
     {
-      id: "1",
+      idArtist: "1",
       name: "BadBunny",
-      linkImage:"https://i.scdn.co/image/ab6761610000517481f47f44084e0a09b5f0fa13",
-      linkList:"",
+      linkImage: "https://i.scdn.co/image/ab6761610000517481f47f44084e0a09b5f0fa13",
+      linkList: "",
       genres: "Regueton",
-      albums: ["algo", "la macarena", "no me se albums de bad bunny", "Paquito el chocolatero",]
+      albums: ["algo", "la macarena", "no me se albums de bad bunny", "Paquito el chocolatero",],
+      spotifyProfileLink: ''
     },
     {
-      id: "2",
+      idArtist: "2",
       name: "Melendi",
-      linkImage:"",
-      linkList:"",
+      linkImage: "",
+      linkList: "",
       genres: "Rock",
-      albums: []
+      albums: [],
+      spotifyProfileLink: ''
     },
     {
-      id: "3",
+      idArtist: "3",
       name: "Metallica",
-      linkImage:"",
-      linkList:"",
+      linkImage: "",
+      linkList: "",
       genres: "Metal",
-      albums: []
+      albums: [],
+      spotifyProfileLink: ''
     },
     {
-      id: "4",
+      idArtist: "4",
       name: "Juan Magan",
-      linkImage:"",
-      linkList:"",
+      linkImage: "",
+      linkList: "",
       genres: "Regueton",
-      albums: []
+      albums: [],
+      spotifyProfileLink: ''
     },
     {
-      id: "5",
+      idArtist: "5",
       name: "Pitbull",
-      linkImage:"",
-      linkList:"",
+      linkImage: "",
+      linkList: "",
       genres: "Regueton",
-      albums: []
+      albums: [],
+      spotifyProfileLink: ''
     }
-  ];
+  ])
 
   getArtists(): Artist[]{
-    return this.artists
+    return this.artists()
   }
 
   getArtistById(id:string): Artist | undefined{
-    return this.artists.find(
-      artist => artist.id === id
+    return this.artists().find(
+      artist => artist.idArtist === id
     );
   }
 

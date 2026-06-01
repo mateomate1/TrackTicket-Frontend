@@ -9,13 +9,13 @@ export const routes: Routes = [
     path: 'search',
     component: SearchPage,
   },
-  { 
-    path: 'favorites', 
-    component:Favorites
+  {
+    path: 'favorites',
+    component: Favorites,
   },
-  { 
-    path: 'artists/:id', 
-    component:ArtistProfile 
+  {
+    path: 'artists/:id',
+    component: ArtistProfile,
   },
   {
     path: 'auth',
@@ -24,5 +24,5 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: 'search',
-  }
+  },
 ];
