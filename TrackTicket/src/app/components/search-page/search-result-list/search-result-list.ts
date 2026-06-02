@@ -48,10 +48,6 @@ export class SearchResultList {
   }
 
   artistDetailClick(concert: searchResponse) {
-    this.artistService.getConcerts({
-      artistName: concert.artistName,
-      artistGenre: concert.artistGenre,
-    });
-    this.router.navigate(['/artist']);
+    this.router.navigate(['/artists', concert.artistName, concert.artistGenre]);
   }
 }

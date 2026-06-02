@@ -13,7 +13,7 @@ export const routes: Routes = [
     component: Favorites,
   },
   {
-    path: 'artists/:nombre',
+    path: 'artists/:nombre/:genero',
     component: ArtistProfile,
   },
   {

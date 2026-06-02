@@ -13,7 +13,12 @@ export class ArtistProfile {
   route = inject(ActivatedRoute);
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('nombre');
-    console.log(id);
+    const nombre = this.route.snapshot.paramMap.get('nombre');
+    const genero = this.route.snapshot.paramMap.get('genero');
+
+    this.artistService.getArtist({
+      artistName: nombre!,
+      artistGenre: genero!,
+    });
   }
 }
