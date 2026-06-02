@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { Artist } from '@interfaces/artist';
 import { ArtistRequest } from '@interfaces/artistRequest';
@@ -7,7 +7,8 @@ import { ArtistRequest } from '@interfaces/artistRequest';
   providedIn: 'root',
 })
 export class ArtistService {
-  API_URL: string = 'http://localhost:8080/api/v1/artists/search';
+  API_URL = 'http://localhost:8080/api/v1/artists/profile';
+
   artist = signal<Artist>({
     idArtist: '',
     name: '',
@@ -20,17 +21,12 @@ export class ArtistService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getConcerts(request: ArtistRequest) {
-    this.artist.set({
-      idArtist: '',
-      name: '',
-      spotifyProfileLink: '',
-      linkList: '',
-      linkImage: '',
-      genre: '',
-      albums: [],
-    });
-    this.httpClient.post<Artist>(this.API_URL, request).subscribe((res) => {
+  getArtist(request: ArtistRequest) {
+    const params = new HttpParams()
+      .set('artistName', request.artistName)
+      .set('artistGenre', request.artistGenre);
+
+    this.httpClient.post<Artist>(this.API_URL, {}, { params }).subscribe((res) => {
       this.artist.set(res);
     });
   }
