@@ -4,6 +4,6 @@ export interface Artist {
   spotifyProfileLink: string;
   linkList: string;
   linkImage: string;
-  genres: string;
+  genre: string;
   albums: string[];
 }

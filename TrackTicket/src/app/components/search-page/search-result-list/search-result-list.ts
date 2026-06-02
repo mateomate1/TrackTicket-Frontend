@@ -5,6 +5,8 @@ import { Component, inject, signal } from '@angular/core';
 import { ConcertSearch } from '@services/concert-search';
 
 import { MapService } from '@services/map-service';
+import { ArtistService } from '@services/artist-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'search-result-list',
@@ -16,6 +18,8 @@ import { MapService } from '@services/map-service';
 export class SearchResultList {
   concertSearch = inject(ConcertSearch);
   mapa = inject(MapService);
+  artistService = inject(ArtistService);
+  router = inject(Router);
 
   loading = signal(false);
 
@@ -41,5 +45,9 @@ export class SearchResultList {
       });
       this.animateZoom(16);
     }, 500);
+  }
+
+  artistDetailClick(concert: searchResponse) {
+    this.router.navigate(['/artists', concert.artistName, concert.artistGenre]);
   }
 }

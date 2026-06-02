@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ArtistsService {
+export class ArtistsListService {
   private http =  inject(HttpClient);
   artists = signal<Artist[]>([
     {
@@ -14,7 +14,7 @@ export class ArtistsService {
       name: "BadBunny",
       linkImage: "https://i.scdn.co/image/ab6761610000517481f47f44084e0a09b5f0fa13",
       linkList: "",
-      genres: "Regueton",
+      genre: "Regueton",
       albums: ["algo", "la macarena", "no me se albums de bad bunny", "Paquito el chocolatero",],
       spotifyProfileLink: ''
     },
@@ -23,7 +23,7 @@ export class ArtistsService {
       name: "Melendi",
       linkImage: "",
       linkList: "",
-      genres: "Rock",
+      genre: "Rock",
       albums: [],
       spotifyProfileLink: ''
     },
@@ -32,7 +32,7 @@ export class ArtistsService {
       name: "Metallica",
       linkImage: "",
       linkList: "",
-      genres: "Metal",
+      genre: "Metal",
       albums: [],
       spotifyProfileLink: ''
     },
@@ -41,7 +41,7 @@ export class ArtistsService {
       name: "Juan Magan",
       linkImage: "",
       linkList: "",
-      genres: "Regueton",
+      genre: "Regueton",
       albums: [],
       spotifyProfileLink: ''
     },
@@ -50,7 +50,7 @@ export class ArtistsService {
       name: "Pitbull",
       linkImage: "",
       linkList: "",
-      genres: "Regueton",
+      genre: "Regueton",
       albums: [],
       spotifyProfileLink: ''
     }
@@ -58,6 +58,14 @@ export class ArtistsService {
 
   getArtists(): Artist[]{
     return this.artists()
+  }
+
+  setArtist(newArtist: Artist){
+    this.artists.update((markers) => [...markers, newArtist])
+  }
+
+  setArtists(newArtists: Artist[]){
+    this.artists.set(newArtists)
   }
 
   getArtistById(id:string): Artist | undefined{
