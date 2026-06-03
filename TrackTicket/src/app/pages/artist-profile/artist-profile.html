@@ -6,7 +6,11 @@
       <div
         class="w-[220px] h-[220px] rounded-full border-[6px] border-[#ebe6df] overflow-hidden shadow-2xl"
       >
-        <img [src]="artist?.linkImage" alt="imagen artista" class="w-full h-full object-cover" />
+        <img
+          [src]="artistService.artist().linkImage"
+          alt="imagen artista"
+          class="w-full h-full object-cover"
+        />
       </div>
     </div>
 
@@ -18,48 +22,76 @@
       >
         <div class="grid grid-cols-2 gap-8">
           <div>
-            <span class="text-[10px] tracking-[0.35em] uppercase text-[#9d7c60] font-semibold">
+            <span
+              class="text-[10px] tracking-[0.35em] uppercase text-[#9d7c60] font-semibold"
+            >
               Artist profile
             </span>
 
             <h1 class="text-6xl font-black leading-none mt-3">
-              {{ artist?.name }}
+              {{ artistService.artist().name }}
             </h1>
 
             <div class="mt-8">
-              <p class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2">
+              <p
+                class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2"
+              >
                 Genre
               </p>
 
-              <div class="bg-[#ddd5ca] rounded-3xl px-5 py-4 inline-block font-bold">
-                {{ artist?.genres }}
+              <div
+                class="bg-[#ddd5ca] rounded-3xl px-5 py-4 inline-block font-bold"
+              >
+                {{ artistService.artist().genre }}
               </div>
             </div>
 
             <div class="mt-6">
-              <p class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2">
+              <p
+                class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2"
+              >
                 Playlist
               </p>
 
               <a
-                [href]="artist?.linkList"
+                [href]="artistService.artist().linkList"
                 target="_blank"
                 class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-black text-white font-bold tracking-[0.2em] uppercase text-xs hover:bg-[#222] transition"
               >
                 Escuchar Playlist
               </a>
             </div>
+
+            <div class="mt-6">
+              <p
+                class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2"
+              >
+                Spotify
+              </p>
+
+              <a
+                [href]="artistService.artist().spotifyProfileLink"
+                target="_blank"
+                class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#1DB954] text-white font-bold tracking-[0.2em] uppercase text-xs hover:opacity-90 transition"
+              >
+                Ver Perfil
+              </a>
+            </div>
           </div>
 
-          <div class="space-y-4">
-            <p class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-4">
+          <div>
+            <p
+              class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-4"
+            >
               Albums
             </p>
 
             <div class="space-y-4">
-              @for (album of artist?.albums; track $index) {
-                <div class="bg-[#ddd5ca] rounded-3xl p-4 flex items-center gap-4">
-                  <h3 class="font-black text-lg z-0">
+              @for (album of artistService.artist().albums; track $index) {
+                <div
+                  class="bg-[#ddd5ca] rounded-3xl p-4 flex items-center gap-4"
+                >
+                  <h3 class="font-black text-lg">
                     {{ album }}
                   </h3>
                 </div>
