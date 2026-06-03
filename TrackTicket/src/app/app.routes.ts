@@ -14,7 +14,7 @@ export const routes: Routes = [
     component: Favorites,
   },
   {
-    path: 'artists/:id',
+    path: 'artists/:name/:genre',
     component: ArtistProfile,
   },
   {

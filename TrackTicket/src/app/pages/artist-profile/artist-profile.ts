@@ -10,13 +10,27 @@ import { ArtistsService } from '../../services/artists-service';
   styleUrl: './artist-profile.css',
 })
 export class ArtistProfile implements OnInit{
-  artist?:Artist;
+  artist?: Artist;
 
-  constructor(private route:ActivatedRoute, private artistService:ArtistsService){}
+  constructor(
+    private route: ActivatedRoute,
+    private artistService: ArtistsService
+  ) {}
 
   ngOnInit(): void {
-    const id = String(this.route.snapshot.paramMap.get('id'));
+    const name = this.route.snapshot.paramMap.get('name');
+    const genre = this.route.snapshot.paramMap.get('genre');
 
-    this.artist = this.artistService.getArtistById(id);
+    if (!name || !genre) return;
+
+    this.artistService.getArtist(name, genre)
+      .subscribe({
+        next: artist => {
+          this.artist = artist;
+        },
+        error: err => {
+          console.error(err);
+        }
+      });
   }
 }
