@@ -3,6 +3,7 @@ import { ArtistProfile } from './pages/artist-profile/artist-profile';
 import { Favorites } from './pages/favorites/favorites';
 import { SearchPage } from './pages/search-page/search-page';
 import { AuthPage } from './pages/auth-page/auth-page';
+import { authGuard } from './guards/auth-guard';
 export const routes: Routes = [
   {
     path: 'search',
@@ -10,7 +11,7 @@ export const routes: Routes = [
   },
   {
     path: 'favorites',
-    component: Favorites,
+    component: Favorites, canActivate: [authGuard]
   },
   {
     path: 'artists/:nombre/:genero',
