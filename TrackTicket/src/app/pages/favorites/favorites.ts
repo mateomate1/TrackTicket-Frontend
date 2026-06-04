@@ -1,16 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { Artist } from '../../interfaces/artist';
-import { ArtistsListService } from '../../services/artists-list-service';
-import { Router } from '@angular/router';
-import { ArtistService } from '@services/artist-service';
+import { Component } from '@angular/core';
+import { FavoriteArtists } from "../../components/favorite-artists/favorite-artists";
+import { FavoriteConcerts } from '@components/favorite-concerts/favorite-concerts';
 
 @Component({
   selector: 'app-favorites',
-  imports: [],
+  imports: [FavoriteArtists, FavoriteConcerts],
   templateUrl: './favorites.html',
   styleUrl: './favorites.css',
 })
-export class Favorites {
-  artistService = inject(ArtistService);
-  router = inject(Router);
-}
+export class Favorites {}
