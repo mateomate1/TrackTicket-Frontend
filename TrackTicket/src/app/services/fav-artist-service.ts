@@ -6,7 +6,7 @@ import { FavouriteArtistRequestDTO } from '@interfaces/fav-artist-request';
   providedIn: 'root',
 })
 export class FavouriteArtistService {
-  private API_URL = 'http://localhost:8080/v1/favourites/artists';
+  private API_URL = 'http://localhost:8080/api/v1/favourites/artists';
 
   isFav = signal(false);
 
