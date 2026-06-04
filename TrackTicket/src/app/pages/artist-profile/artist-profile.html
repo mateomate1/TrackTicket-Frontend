@@ -22,9 +22,7 @@
       >
         <div class="grid grid-cols-2 gap-8">
           <div>
-            <span
-              class="text-[10px] tracking-[0.35em] uppercase text-[#9d7c60] font-semibold"
-            >
+            <span class="text-[10px] tracking-[0.35em] uppercase text-[#9d7c60] font-semibold">
               Artist profile
             </span>
 
@@ -33,23 +31,17 @@
             </h1>
 
             <div class="mt-8">
-              <p
-                class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2"
-              >
+              <p class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2">
                 Genre
               </p>
 
-              <div
-                class="bg-[#ddd5ca] rounded-3xl px-5 py-4 inline-block font-bold"
-              >
+              <div class="bg-[#ddd5ca] rounded-3xl px-5 py-4 inline-block font-bold">
                 {{ artistService.artist().genre }}
               </div>
             </div>
 
             <div class="mt-6">
-              <p
-                class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2"
-              >
+              <p class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2">
                 Playlist
               </p>
 
@@ -63,9 +55,7 @@
             </div>
 
             <div class="mt-6">
-              <p
-                class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2"
-              >
+              <p class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2">
                 Spotify
               </p>
 
@@ -77,20 +67,29 @@
                 Ver Perfil
               </a>
             </div>
+
+            <div class="mt-6">
+              <button
+                (click)="changeFav()"
+                class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#9d7c60] text-white font-bold tracking-[0.2em] uppercase text-xs hover:opacity-90 transition cursor-pointer"
+              >
+                @if (favArtist.isFav()) {
+                  Quitar de favoritos
+                } @else {
+                  Añadir a favoritos
+                }
+              </button>
+            </div>
           </div>
 
           <div>
-            <p
-              class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-4"
-            >
+            <p class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-4">
               Albums
             </p>
 
             <div class="space-y-4">
               @for (album of artistService.artist().albums; track $index) {
-                <div
-                  class="bg-[#ddd5ca] rounded-3xl p-4 flex items-center gap-4"
-                >
+                <div class="bg-[#ddd5ca] rounded-3xl p-4 flex items-center gap-4">
                   <h3 class="font-black text-lg">
                     {{ album }}
                   </h3>

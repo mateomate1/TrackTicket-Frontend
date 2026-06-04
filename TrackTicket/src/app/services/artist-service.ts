@@ -9,19 +9,22 @@ import { ArtistRequest } from '@interfaces/artistRequest';
 export class ArtistService {
   API_URL = 'http://localhost:8080/api/v1/artists/profile';
 
-  artist = signal<Artist>({
+  defaultArtist: Artist = {
     idArtist: '',
-    name: '',
+    name: 'Cargando...',
     spotifyProfileLink: '',
     linkList: '',
     linkImage: '',
-    genre: '',
+    genre: 'Cargando...',
     albums: [],
-  });
+  };
+
+  artist = signal<Artist>(this.defaultArtist);
 
   constructor(private httpClient: HttpClient) {}
 
   getArtist(request: ArtistRequest) {
+    this.artist.set(this.defaultArtist);
     const params = new HttpParams()
       .set('artistName', request.artistName)
       .set('artistGenre', request.artistGenre);
