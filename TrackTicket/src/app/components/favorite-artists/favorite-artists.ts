@@ -9,9 +9,9 @@ import { RouterLink } from "@angular/router";
   styleUrl: './favorite-artists.css',
 })
 export class FavoriteArtists implements OnInit{
-  favArtistService = inject(FavoritesService);
+  favService = inject(FavoritesService);
 
   ngOnInit(): void {
-    this.favArtistService.loadFavArtists();
+    this.favService.loadFavArtists();
   }
 }
