@@ -3,32 +3,42 @@
     <a routerLink="/" class="flex items-center gap-3 group">
       <img src="favicon.ico" class="w-10 transition-transform duration-300 group-hover:scale-110" />
       <span class="hidden md:block text-lg font-black tracking-[0.2em] uppercase">
-          TrackTicket
+        TrackTicket
       </span>
     </a>
     <nav class="ml-12 flex items-center gap-3">
-      <a routerLink="/search" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="px-5 py-2 rounded-full text-xs uppercase tracking-[0.25em] font-bold hover:bg-white/10 transition">Search</a>
-      <a routerLink="/favorites" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="px-5 py-2 rounded-full text-xs uppercase tracking-[0.25em] font-bold hover:bg-white/10 transition">Favorites</a>
+      <a routerLink="/search" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+        class="px-5 py-2 rounded-full text-xs uppercase tracking-[0.25em] font-bold hover:bg-white/10 transition">Search</a>
+      <a routerLink="/favorites" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+        class="px-5 py-2 rounded-full text-xs uppercase tracking-[0.25em] font-bold hover:bg-white/10 transition">Favorites</a>
     </nav>
     <div class="ml-auto flex items-center gap-4">
       @if (user.isLoggedIn()) {
-      <button (click)="deleteAccount()" class="text-[#9d7c60] text-xs uppercase tracking-[0.2em] font-bold hover:text-white transition">
-        Borrar cuenta
-      </button>
-      <button (click)="logout()"
-        class="px-6 py-3 rounded-full bg-[#ece7df] text-black font-black uppercase tracking-[0.2em] text-xs hover:scale-105 transition">
-        Cerrar sesión
-      </button>
+        <button (click)="deleteAccount()"
+          class="text-[#9d7c60] text-xs uppercase tracking-[0.2em] font-bold hover:text-white transition">
+          Borrar cuenta
+        </button>
+        <button (click)="logout()"
+          class="px-6 py-3 rounded-full bg-[#ece7df] text-black font-black uppercase tracking-[0.2em] text-xs hover:scale-105 transition">
+          Cerrar sesión
+        </button>
       } @else {
-      <button (click)="goToAuth()" class="w-12 h-12 rounded-full bg-[#ece7df] text-black flex items-center justify-center hover:scale-105 transition cursor-pointer">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-    </svg>
-  </button>
+        <button (click)="goToAuth()"
+          class="w-12 h-12 rounded-full bg-[#ece7df] text-black flex items-center justify-center hover:scale-105 transition cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+          </svg>
+        </button>
       }
 
-      <a routerLink="/notifications" class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center hover:bg-white/10 transition">
-        <img src="notification.png" class="w-7" />
+      <a routerLink="/notifications"
+        class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center hover:bg-white/10 transition">
+        @if (notificationService.hasUnreadNotifications()) {
+          <img src="notification.png" class="w-7" />
+        }@else {
+          <img src="notificationActive.png" class="w-7" />
+        }
       </a>
     </div>
   </div>
