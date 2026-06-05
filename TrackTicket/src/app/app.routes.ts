@@ -4,6 +4,7 @@ import { Favorites } from './pages/favorites/favorites';
 import { SearchPage } from './pages/search-page/search-page';
 import { AuthPage } from './pages/auth-page/auth-page';
 import { authGuard } from './guards/auth-guard';
+import { ConcertPage } from '@pages/concert-page/concert-page';
 export const routes: Routes = [
   {
     path: 'search',
@@ -16,6 +17,10 @@ export const routes: Routes = [
   {
     path: 'artists/:nombre/:genero',
     component: ArtistProfile,
+  },
+  {
+    path: 'concert/:id',
+    component: ConcertPage,
   },
   {
     path: 'auth',
