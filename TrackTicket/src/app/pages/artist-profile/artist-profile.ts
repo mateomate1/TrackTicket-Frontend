@@ -1,6 +1,7 @@
 import { FavouriteArtistService } from './../../services/fav-artist-service';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FavouriteArtistRequestDTO } from '@interfaces/fav-artist-request';
 import { ArtistService } from '@services/artist-service';
 import { Session } from '@services/session';
 
@@ -44,13 +45,11 @@ export class ArtistProfile {
       return;
     }
 
-    const request = {
+    const request: FavouriteArtistRequestDTO = {
       token: token,
       idArtist: this.artistService.artist().idArtist,
       artistGenre: this.artistService.artist().genre,
     };
-
-    console.log(this.artistService.artist().idArtist)
 
     if (this.favArtist.isFav()) {
       console.log("remove")

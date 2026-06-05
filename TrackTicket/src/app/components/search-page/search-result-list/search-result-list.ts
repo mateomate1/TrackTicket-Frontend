@@ -50,4 +50,8 @@ export class SearchResultList {
   artistDetailClick(concert: searchResponse) {
     this.router.navigate(['/artists', concert.artistName, concert.artistGenre]);
   }
+
+  concertDetailClick(concert: searchResponse) {
+    this.router.navigate(['/concert', concert.idTicketMaster]);
+  }
 }
