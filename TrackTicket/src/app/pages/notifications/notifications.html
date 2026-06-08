@@ -7,75 +7,35 @@
       </h1>
     </div>
 
-    <section class="rounded-3xl border border-white/10 bg-black/20 backdrop-blur-sm p-6 space-y-5"
-    >
-
+    <section class="rounded-3xl border border-white/10 bg-black/20 backdrop-blur-sm p-6 space-y-5">
       @for(notification of notificationService.notifications(); track notification.idNotification){
-
-
-            @if(notification.type === 'NEW_CONCERT') {
-              <div class="bg-[#ece7df] text-black rounded-[34px] p-6 mb-5 shadow-xl border-l-[10px] border-green-500">
-                <p class="text-[11px] tracking-[0.3em] uppercase text-green-600 font-semibold mb-2">
-                  Nuevo concierto
+        <div class="bg-[#ece7df] text-black rounded-[34px] p-6 mb-5 shadow-xl border-l-[10px] flex justify-between items-center" [class]="getNotificationConfig(notification.type).borderClass">
+            <div class="flex-1">
+                <p class="text-[11px] tracking-[0.3em] uppercase font-semibold mb-2" [class]="getNotificationConfig(notification.type).textClass">
+                {{ getNotificationConfig(notification.type).label }}
                 </p>
 
                 <h2 class="text-xl font-black">
-                  {{ notification.message }}
+                {{ notification.message }}
                 </h2>
 
                 <p class="text-sm text-gray-500 mt-2">
-                  {{ notification.launch | date:'dd/MM/yyyy HH:mm' }}
+                {{ notification.launch | date:'dd/MM/yyyy HH:mm' }}
                 </p>
-              </div>
-            }
+            </div>
 
-            @else if(notification.type === 'MODIFIED_CONCERT') {
-              <div class="bg-[#ece7df] text-black rounded-[34px] p-6 mb-5 shadow-xl border-l-[10px] border-yellow-500">
-                <p class="text-[11px] tracking-[0.3em] uppercase text-yellow-600 font-semibold mb-2">
-                  Concierto modificado
-                </p>
+            <div class="flex flex-col gap-3 ml-6">
+                @if (!notification.read) {
+                <button class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition-colors" (click)="markAsRead(notification)">
+                    Marcar como leída
+                </button>
+                }
 
-                <h2 class="text-xl font-black">
-                  {{ notification.message }}
-                </h2>
-
-                <p class="text-sm text-gray-500 mt-2">
-                  {{ notification.launch | date:'dd/MM/yyyy HH:mm' }}
-                </p>
-              </div>
-            }
-
-            @else if(notification.type === 'CANCELLED_CONCERT') {
-              <div class="bg-[#ece7df] text-black rounded-[34px] p-6 mb-5 shadow-xl border-l-[10px] border-red-500">
-                <p class="text-[11px] tracking-[0.3em] uppercase text-red-600 font-semibold mb-2">
-                  Concierto cancelado
-                </p>
-
-                <h2 class="text-xl font-black">
-                  {{ notification.message }}
-                </h2>
-
-                <p class="text-sm text-gray-500 mt-2">
-                  {{ notification.launch | date:'dd/MM/yyyy HH:mm' }}
-                </p>
-              </div>
-            }
-
-            @else {
-              <div class="bg-[#ece7df] text-black rounded-[34px] p-6 mb-5 shadow-xl border-l-[10px] border-blue-500">
-                <p class="text-[11px] tracking-[0.3em] uppercase text-blue-600 font-semibold mb-2">
-                  Próximo concierto
-                </p>
-
-                <h2 class="text-xl font-black">
-                  {{ notification.message }}
-                </h2>
-
-                <p class="text-sm text-gray-500 mt-2">
-                  {{ notification.launch | date:'dd/MM/yyyy HH:mm' }}
-                </p>
-              </div>
-            }
+                <button class="px-4 py-2 rounded-lg bg-red-600 text-white font-medium shadow hover:bg-red-700 transition-colors" (click)="deleteNotification(notification)">
+                Borrar
+                </button>
+            </div>
+        </div>
       } @empty {
 
         <div class="bg-[#ece7df] text-black rounded-[34px] p-12 text-center shadow-xl">
@@ -91,9 +51,7 @@
             Cuando ocurra algún cambio en tus conciertos favoritos aparecerá aquí.
           </p>
         </div>
-
       }
-
     </section>
   </div>
 </main>

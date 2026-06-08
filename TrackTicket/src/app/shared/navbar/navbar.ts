@@ -20,7 +20,7 @@ export class Navbar implements OnInit{
   showUserMenu = false;
 
   ngOnInit(): void {
-    this.notificationService.hasUnreadNotifications();
+    this.notificationService.loadNotifications();  
   }
 
   goToAuth(): void {

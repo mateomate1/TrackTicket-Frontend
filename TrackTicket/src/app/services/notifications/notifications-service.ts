@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { Notification } from '@interfaces/notification';
 import { enviroment } from '@shared/environmentAPI';
 
@@ -11,22 +11,24 @@ export class NotificationsService {
   private token = localStorage.getItem('token');
 
   notifications = signal<Notification[]>([]);
-  hasUnreadNotifications = signal(false);
+  hasUnreadNotifications = computed(() =>
+    this.notifications().some(notification => !notification.read)
+  );
 
-  loadUnreadCount(): void{
-    this.http.post<number>(`${enviroment.root}/v1/notifications/unread-count`,
-      {
-        'token': this.token
-      }
-     ).subscribe({
-        next: (count) => {
-          this.hasUnreadNotifications.set(count>0);
-        },
-        error: (err) => {
-          console.error(`Fail in POST request at ${enviroment.root}/v1/notifications/unread-count: ${err}`);
-        }
-     })
-  }
+  // loadUnreadCount(): void{
+  //   this.http.post<number>(`${enviroment.root}/v1/notifications/unread-count`,
+  //     {
+  //       'token': this.token
+  //     }
+  //    ).subscribe({
+  //       next: (count) => {
+  //         this.hasUnreadNotifications.set(count>0);
+  //       },
+  //       error: (err) => {
+  //         console.error(`Fail in POST request at ${enviroment.root}/v1/notifications/unread-count: ${err}`);
+  //       }
+  //    })
+  // }
 
   loadNotifications(): void{
     this.http.post<Notification[]>(`${enviroment.root}/v1/notifications/list`,
@@ -75,9 +77,6 @@ export class NotificationsService {
         console.error("Fail trying to delete notification: " + err);
         
       }
-    })
-    
+    }) 
   }
-
-
 }
