@@ -1,0 +1,47 @@
+<main class="h-full text-white">
+  <section
+    class="relative h-full border border-white/10 bg-black/20 backdrop-blur-sm overflow-hidden rounded-3xl"
+  >
+    <div class="overflow-y-auto main-scroll h-full ">
+      <div class="w-[92%] max-w-5xl mx-auto py-16 ">
+        <div class="mb-10 text-center">
+          <h1 class="text-6xl font-black mt-3">
+            Artistas Favoritos
+          </h1>
+        </div>
+
+        @for (artist of favService.favArtists(); track artist.idArtist) {
+          <div class="bg-[#ece7df] text-black rounded-[34px] p-6 mb-5 flex items-center justify-between shadow-xl">
+            <div>
+              <p class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2">
+                Artist
+              </p>
+
+              <h2 class="text-3xl font-black">
+                {{ artist.name }}
+              </h2>
+            </div>
+
+            <a [routerLink]="['/artists', artist.name, artist.genre]" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-black text-white font-bold tracking-[0.2em] uppercase text-xs hover:bg-[#222] transition">
+              Ver Perfil
+            </a>
+          </div>
+        } @empty {
+          <div class="bg-[#ece7df] text-black rounded-[34px] p-12 text-center shadow-xl">
+            <p class="text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-4">
+              No favorites yet
+            </p>
+
+            <h2 class="text-3xl font-black mb-3">
+              Tu lista está vacía
+            </h2>
+
+            <p class="text-gray-600">
+              Guarda artistas en favoritos y búscalos más rápido aquí.
+            </p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+</main>

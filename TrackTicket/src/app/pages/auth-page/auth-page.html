@@ -1,0 +1,35 @@
+<div class="min-h-screen flex items-center justify-center text-white">
+  <div
+    class="w-full max-w-md border border-white/10 bg-black/20 backdrop-blur-sm rounded-[34px] p-4"
+  >
+    <div class="flex mb-6 bg-[#ece7df] rounded-full p-1">
+      <button
+        (click)="showLogin.set(true)"
+        [class]="
+          showLogin()
+            ? 'flex-1 py-3 rounded-full bg-black text-white font-bold tracking-[0.2em] uppercase text-xs transition'
+            : 'flex-1 py-3 rounded-full text-[#9d7c60] font-bold tracking-[0.2em] uppercase text-xs transition'
+        "
+      >
+        Login
+      </button>
+
+      <button
+        (click)="showLogin.set(false)"
+        [class]="
+          !showLogin()
+            ? 'flex-1 py-3 rounded-full bg-black text-white font-bold tracking-[0.2em] uppercase text-xs transition'
+            : 'flex-1 py-3 rounded-full text-[#9d7c60] font-bold tracking-[0.2em] uppercase text-xs transition'
+        "
+      >
+        Registro
+      </button>
+    </div>
+
+    @if (showLogin()) {
+      <app-login-form />
+    } @else {
+      <app-register-form (registroExitoso)="showLogin.set(true)" />
+    }
+  </div>
+</div>
