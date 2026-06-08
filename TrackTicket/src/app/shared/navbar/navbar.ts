@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { User } from '@services/user';
 import { Auth } from '@services/auth';
+import { NotificationsService } from '@services/notifications/notifications-service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,12 +11,17 @@ import Swal from 'sweetalert2';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
-export class Navbar {
+export class Navbar implements OnInit{
   user = inject(User);
+  notificationService = inject(NotificationsService)
   private auth = inject(Auth);
   private router = inject(Router);
 
   showUserMenu = false;
+
+  ngOnInit(): void {
+    this.notificationService.loadNotifications();  
+  }
 
   goToAuth(): void {
     this.router.navigate(['/auth']);

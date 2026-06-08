@@ -1,6 +1,4 @@
-<header
-  class="sticky top-0 z-50 border-b border-white/10 bg-black/20 backdrop-blur-sm text-white rounded-3xl"
->
+<header class="sticky top-0 z-50 border-b border-white/10 bg-black/20 backdrop-blur-sm text-white rounded-3xl">
   <div class="flex items-center px-6 h-20">
     <a routerLink="/" class="flex items-center gap-3 group">
       <img src="favicon.ico" class="w-10 transition-transform duration-300 group-hover:scale-110" />
@@ -10,31 +8,25 @@
     </a>
 
     <nav class="ml-12 flex items-center gap-3">
-      <a
-        routerLink="/search"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="px-5 py-2 rounded-full text-xs uppercase tracking-[0.25em] font-bold"
-      >
+      <a routerLink="/search" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="px-5 py-2 rounded-full text-xs uppercase tracking-[0.25em] font-bold">
         Search
       </a>
     </nav>
 
     <div class="ml-auto flex items-center gap-4">
       @if (user.isLoggedIn()) {
-        <a
-          routerLink="/notifications"
-          class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center hover:bg-white/10 transition"
-        >
+        <a routerLink="/notifications"
+        class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center hover:bg-white/10 transition">
+        @if (notificationService.hasUnreadNotifications()) {
+          <img src="notificationActive.png" class="w-7" />
+        }@else {
           <img src="notification.png" class="w-7" />
-        </a>
+        }
+      </a>
       }
 
       @if (user.isLoggedIn()) {
-        <a
-          routerLink="/favorites"
-          class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center hover:bg-white/10 transition"
-        >
+        <a routerLink="/favorites" class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center hover:bg-white/10 transition">
           <img src="fluent-color--heart-32.svg" class="w-7" />
         </a>
       }
@@ -78,19 +70,9 @@
           }
         </div>
       } @else {
-        <button
-          (click)="goToAuth()"
-          class="w-12 h-12 rounded-full bg-[#ece7df] text-black flex items-center justify-center hover:scale-105 transition cursor-pointer"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5 text-white"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
-            />
+        <button (click)="goToAuth()" class="w-12 h-12 rounded-full bg-[#ece7df] text-black flex items-center justify-center hover:scale-105 transition cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
           </svg>
         </button>
       }

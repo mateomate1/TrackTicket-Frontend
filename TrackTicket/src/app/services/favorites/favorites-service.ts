@@ -25,7 +25,7 @@ export class FavoritesService {
         this.favArtists.set(response);
       },
       error: (err) => {
-        console.error(err);
+        console.error(`Fail in POST request at ${enviroment.root}/v1/favourites/artists/list: ${err}`);
       }
     });
   }
