@@ -56,4 +56,11 @@ export class MapComponent {
       this.markers.update((markers) => [...markers, userLocation]);
     });
   }
+
+  openGoogleMaps(marker: google.maps.LatLngLiteral) {
+    window.open(
+      'https://www.google.com/maps/dir/?api=1&destination=' + marker.lat + ',' + marker.lng,
+      '_blank',
+    );
+  }
 }
