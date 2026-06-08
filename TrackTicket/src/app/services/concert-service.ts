@@ -10,20 +10,20 @@ export class ConcertService {
   API_URL = 'http://localhost:8080/api/v1/concerts/details';
 
   defaultConcert: searchResponse = {
-    idTicketMaster: 'string',
-    name: 'string',
-    date: 'string',
-    link: 'string',
-    artistName: 'string',
-    artistGenre: 'string',
-    artistLink: 'string',
+    idTicketMaster: 'Cargando...',
+    name: 'Cargando...',
+    date: 'Cargando...',
+    link: 'Cargando...',
+    artistName: 'Cargando...',
+    artistGenre: 'Cargando...',
+    artistLink: 'Cargando...',
     venue: {
-      venueName: 'string',
-      latitude: 1,
-      longitude: 1,
-      venueAddress: 'string',
-      venueState: 'string',
-      venueCountry: 'string',
+      venueName: 'Cargando...',
+      latitude: 0,
+      longitude: 0,
+      venueAddress: 'Cargando...',
+      venueState: 'Cargando...',
+      venueCountry: 'Cargando...',
     },
   };
 
