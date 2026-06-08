@@ -1,38 +1,45 @@
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" class="w-full bg-[#ece7df] rounded-[34px] text-black px-8 py-10">
+  <div class="mb-6">
+    <label class="block text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2">
+      Usuario
+    </label>
 
-  <div class="mb-4">
-    <label class="block text-gray-400 text-sm mb-1">Usuario</label>
     <input
       type="text"
       [ngModel]="userName()"
       (ngModelChange)="userName.set($event)"
       name="userName"
       placeholder="Tu nombre de usuario"
-      class="w-full bg-gray-700 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+      class="w-full bg-[#ddd5ca] rounded-3xl px-5 py-4 font-bold outline-none focus:ring-2 focus:ring-[#9d7c60]"
     />
   </div>
 
-  <div class="mb-6">
-    <label class="block text-gray-400 text-sm mb-1">Contraseña</label>
+  <div class="mb-8">
+    <label class="block text-[11px] tracking-[0.3em] uppercase text-[#9d7c60] font-semibold mb-2">
+      Contraseña
+    </label>
+
     <input
       type="password"
       [ngModel]="password()"
       (ngModelChange)="password.set($event)"
       name="password"
       placeholder="Tu contraseña"
-      class="w-full bg-gray-700 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+      class="w-full bg-[#ddd5ca] rounded-3xl px-5 py-4 font-bold outline-none focus:ring-2 focus:ring-[#9d7c60]"
     />
   </div>
 
   @if (error()) {
-    <p class="text-red-400 text-sm mb-4">{{ error() }}</p>
+    <div class="mb-6 bg-red-100 text-red-700 rounded-3xl px-5 py-4 font-semibold">
+      {{ error() }}
+    </div>
   }
 
   <button
     type="submit"
     [disabled]="loading()"
-    class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded-lg transition-all disabled:opacity-50">
+    class="w-full inline-flex items-center justify-center px-8 py-4 rounded-full bg-black text-white font-bold tracking-[0.2em] uppercase text-xs hover:bg-[#222] transition disabled:opacity-50"
+  >
     {{ loading() ? 'Entrando...' : 'Entrar' }}
   </button>
-
 </form>
