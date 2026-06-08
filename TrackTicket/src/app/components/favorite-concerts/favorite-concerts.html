@@ -19,7 +19,7 @@
               </h2>
             </div>
 
-            <a [routerLink]="['/concerts', concert.idTicketMaster]" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-black text-white font-bold tracking-[0.2em] uppercase text-xs hover:bg-[#222] transition">
+            <a (click)="$event.stopPropagation(); concertDetailClick(concert)" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-black text-white font-bold tracking-[0.2em] uppercase text-xs hover:bg-[#222] transition">
               Ver Perfil
             </a>
           </div>
