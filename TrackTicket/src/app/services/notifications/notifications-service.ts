@@ -15,21 +15,6 @@ export class NotificationsService {
     this.notifications().some(notification => !notification.read)
   );
 
-  // loadUnreadCount(): void{
-  //   this.http.post<number>(`${enviroment.root}/v1/notifications/unread-count`,
-  //     {
-  //       'token': this.token
-  //     }
-  //    ).subscribe({
-  //       next: (count) => {
-  //         this.hasUnreadNotifications.set(count>0);
-  //       },
-  //       error: (err) => {
-  //         console.error(`Fail in POST request at ${enviroment.root}/v1/notifications/unread-count: ${err}`);
-  //       }
-  //    })
-  // }
-
   loadNotifications(): void{
     this.http.post<Notification[]>(`${enviroment.root}/v1/notifications/list`,
       {
